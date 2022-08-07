@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {Observable, of, pipe} from 'rxjs';
 import { Food } from "../model/food";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -9,6 +9,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class FoodService {
   private foodsUrl = 'api/foods';  // URL to web api
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient) { }
@@ -18,6 +21,13 @@ export class FoodService {
       .pipe(
         catchError(this.handleError<Food[]>('getFoods', []))
       );
+  }
+
+  createFood(food: Food): Observable<Food> {
+    return this.http.post<Food>(this.foodsUrl, food, this.httpOptions)
+    .pipe(
+      catchError(this.handleError<Food>('getFoods'))
+    );
   }
 
   /**

@@ -23,4 +23,12 @@ export class FoodComponent implements OnInit {
       .subscribe(foods => this.foods = foods);
   }
 
+  addFood(name: string, calories: number, fat: number, carb: number, protein: number): void {
+    console.log(calories)
+    this.foodService.createFood({name, calories, fat, carb, protein} as Food)
+      .subscribe(food => {
+        this.foods.push(food);
+      })
+  }
+
 }

@@ -1,5 +1,6 @@
 <h3>My Foods</h3>
 
+<div>
 <ul>
   <li *ngFor="let food of foods">
     ID: <span>{{food.id}}</span><br>
@@ -10,3 +11,23 @@
     Protein: <span>{{food.protein}}</span><br>
   </li>
 </ul>
+</div>
+
+<br>
+<div>
+  <label for="name">Food name: </label>
+  <input id="name" #name type="text"/><br>
+  <label for="calories">Food calories: </label>
+  <input id="calories" #calories type="number"/><br>
+  <label for="fat">Food fat: </label>
+  <input id="fat" #fat type="number"/><br>
+  <label for="carb">Food carb: </label>
+  <input id="carb" #carb type="number"/><br>
+  <label for="protein">Food protein: </label>
+  <input id="protein" #protein type="number"/><br>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="addFood(name.value, calories.valueAsNumber, fat.valueAsNumber, carb.valueAsNumber, protein.valueAsNumber);">
+    Add Food
+  </button>
+</div>

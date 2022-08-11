@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { Food } from '../model/food';
-import { FOODS } from "../mock/mock-food";
-import {FoodService} from "../service/food.service";
+import { Food } from '../../core/model/food';
+import { FOODS } from "../../core/mock-data/mock-food";
+import {FoodService} from "../../core/service/food.service";
 
 @Component({
   selector: 'app-food',
@@ -10,7 +10,7 @@ import {FoodService} from "../service/food.service";
   styleUrls: ['./food.component.css']
 })
 export class FoodComponent implements OnInit {
-  public foods: Food[] = FOODS;
+  public foods: Food[] = [];
 
   constructor(private foodService: FoodService) { }
 

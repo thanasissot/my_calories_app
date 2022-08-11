@@ -1,4 +1,4 @@
-package com.mycalories.model.model;
+package com.mycalories.model2.model;
 
 import lombok.Data;
 

@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
 
-    <artifactId>calories-model</artifactId>
+    <artifactId>calories-model2</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -30,5 +30,4 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 </project>

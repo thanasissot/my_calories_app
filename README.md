@@ -25,5 +25,8 @@ My Calories App
 
 3. Front-End
    Angular App
+   npm i @angular/material
+   npm install ngx-toastr --save
+   
 
-4. 
+5. 

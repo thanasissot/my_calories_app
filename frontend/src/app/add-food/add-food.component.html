@@ -1,0 +1,70 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="formSubmit(form)">
+    <div class="row form-group">
+      <!--   FOOD NAME   -->
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="nameInput">Food name</label>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <input type="text" class="form-control" id="nameInput" placeholder="" formControlName="name">
+      </div>
+      <!--   FOOD CALORIES   -->
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="caloriesInput">Food calories</label>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <input type="number" class="form-control" id="caloriesInput" placeholder="" formControlName="calories">
+      </div>
+      <!--   FOOD FAT   -->
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="fatInput">Food calories</label>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <input type="number" class="form-control" id="fatInput" placeholder="" formControlName="fat">
+      </div>
+      <!--   FOOD CARB   -->
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="carbInput">Food calories</label>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <input type="number" class="form-control" id="carbInput" placeholder="" formControlName="carb">
+      </div>
+      <!--   FOOD protein   -->
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="proteinInput">Food calories</label>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+      <input type="number" class="form-control" id="proteinInput" placeholder="" formControlName="protein">
+<!--        <div *ngIf="form.get('protein').errors?.required && form.get('protein').dirty" class="text-danger">-->
+<!--          Field is required-->
+<!--        </div>-->
+<!--        <div *ngIf="form.get('protein').errors?.minlength && form.get('protein').dirty" class="text-danger">-->
+<!--          The minimum length of field is 3 characters-->
+<!--        </div>-->
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <button mat-button title="Save" type="submit" style="border: 1px dotted black; margin-top: 5px;">
+          Add Food
+        </button>
+      </div>
+    </div>
+  </form>
+
+<!--  <label for="name">Food name: </label>-->
+<!--  <input id="name" #name type="text"/><br>-->
+<!--  <label for="calories">Food calories: </label>-->
+<!--  <input id="calories" #calories type="number"/><br>-->
+<!--  <label for="fat">Food fat: </label>-->
+<!--  <input id="fat" #fat type="number"/><br>-->
+<!--  <label for="carb">Food carb: </label>-->
+<!--  <input id="carb" #carb type="number"/><br>-->
+<!--  <label for="protein">Food protein: </label>-->
+<!--  <input id="protein" #protein type="number"/><br>-->
+
+<!--  &lt;!&ndash; (click) passes input value to add() and then clears the input &ndash;&gt;-->
+<!--  <button type="button" class="add-button" (click)="addFood(name.value, calories.valueAsNumber, fat.valueAsNumber, carb.valueAsNumber, protein.valueAsNumber);">-->
+<!--    Add Food-->
+<!--  </button>-->
+</div>

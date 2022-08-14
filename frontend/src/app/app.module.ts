@@ -32,7 +32,7 @@ import {ToastrModule} from "ngx-toastr";
     ReactiveFormsModule,
     MatIconModule,
     ToastrModule.forRoot({
-      positionClass :'toast-bottom-right'
+      positionClass :'toast-top-right'
     })
   ],
   providers: [],

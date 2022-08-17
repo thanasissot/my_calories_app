@@ -20,4 +20,8 @@ public class TotalService {
         return totalRepository.save(total);
     }
 
+    public List<Total> getAllTotalsByDate(String date) {
+        return totalRepository.findByDate(date);
+    }
+
 }

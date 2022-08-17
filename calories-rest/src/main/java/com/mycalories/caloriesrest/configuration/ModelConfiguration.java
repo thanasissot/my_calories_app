@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EntityScan("com.mycalories.model2")
-@EnableJpaRepositories(basePackages = "com.mycalories.model2.repository")
+@EnableJpaRepositories(basePackages = "com.mycalories.model2")
 public class ModelConfiguration {
 }

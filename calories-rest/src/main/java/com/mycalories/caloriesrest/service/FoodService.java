@@ -1,7 +1,7 @@
 package com.mycalories.caloriesrest.service;
 
-import com.mycalories.model2.model.Food;
-import com.mycalories.model2.repository.FoodRepository;
+import com.mycalories.model2.food.Food;
+import com.mycalories.model2.food.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

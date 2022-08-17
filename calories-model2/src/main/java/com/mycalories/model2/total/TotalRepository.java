@@ -1,6 +1,5 @@
-package com.mycalories.model2.repository;
+package com.mycalories.model2.total;
 
-import com.mycalories.model2.model.Total;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

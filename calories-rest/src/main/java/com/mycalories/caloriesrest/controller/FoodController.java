@@ -1,7 +1,7 @@
 package com.mycalories.caloriesrest.controller;
 
 import com.mycalories.caloriesrest.service.FoodService;
-import com.mycalories.model2.model.Food;
+import com.mycalories.model2.food.Food;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

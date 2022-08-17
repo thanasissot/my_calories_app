@@ -1,5 +1,6 @@
-package com.mycalories.model2.model;
+package com.mycalories.model2.total;
 
+import com.mycalories.model2.food.Food;
 import lombok.Data;
 
 import javax.persistence.*;

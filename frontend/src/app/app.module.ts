@@ -13,13 +13,15 @@ import {MatButtonModule} from "@angular/material/button";
 import { AddFoodComponent } from './add-food/add-food.component';
 import {MatIconModule} from "@angular/material/icon";
 import {ToastrModule} from "ngx-toastr";
+import {MydiaryComponent} from "./mydiary/mydiary.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     FoodComponent,
     NavbarComponent,
-    AddFoodComponent
+    AddFoodComponent,
+    MydiaryComponent
   ],
   imports: [
     BrowserModule,

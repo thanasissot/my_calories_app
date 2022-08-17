@@ -23,8 +23,6 @@ import java.util.List;
 public class TotalController {
     private final TotalService totalService;
     private final FoodService foodService;
-    private final SimpleDateFormat fromFormat = new SimpleDateFormat("yyyyMMdd");
-    private final SimpleDateFormat toFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping
     ResponseEntity<List<Total>> getAllTotals() {
@@ -37,21 +35,8 @@ public class TotalController {
     }
 
     @GetMapping("/date/{date}")
-    ResponseEntity<Object> getAllTotalsByDate(@PathVariable String date) {
-        fromFormat.setLenient(false);
-        toFormat.setLenient(false);
-        Date date_;
-        try {
-            date_ = fromFormat.parse(date);
-            List<Total> totalList = totalService.getAllTotalsByDate(toFormat.format(date_));
-            return new ResponseEntity<>(totalList, HttpStatus.OK);
-
-        } catch (ParseException e) {
-            log.error("Date could not be parsed");
-            log.error(e.getLocalizedMessage());
-        }
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong date format");
+    ResponseEntity<List<Total>> getAllTotalsByDate(@PathVariable String date) {
+        return new ResponseEntity<>(totalService.getAllTotalsByDate(date), HttpStatus.OK);
     }
 
 }

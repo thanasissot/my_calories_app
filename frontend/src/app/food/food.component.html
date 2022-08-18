@@ -1,12 +1,42 @@
-<h3>Foods Database</h3>
-<div>
-<ul>
-  <li *ngFor="let food of foods">
-    Name: <span>{{food.name}}</span><br>
-    Calories: <span>{{food.calories}}</span><br>
-    Fat: <span>{{food.fat}}</span><br>
-    Carb: <span>{{food.carb}}</span><br>
-    Protein: <span>{{food.protein}}</span><br>
-  </li>
-</ul>
+<div class="mx-3">
+  <h2 class="my-3">Foods Database</h2>
+  <mat-divider></mat-divider>
+  <table mat-table [dataSource]="foods" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- calories Column -->
+    <ng-container matColumnDef="calories">
+      <th mat-header-cell *matHeaderCellDef> Calories </th>
+      <td mat-cell *matCellDef="let element"> {{element.calories}} </td>
+    </ng-container>
+
+    <!-- fat Column -->
+    <ng-container matColumnDef="fat">
+      <th mat-header-cell *matHeaderCellDef> Fat </th>
+      <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
+    </ng-container>
+
+    <!-- carb Column -->
+    <ng-container matColumnDef="carb">
+      <th mat-header-cell *matHeaderCellDef> Carb </th>
+      <td mat-cell *matCellDef="let element"> {{element.carb}} </td>
+    </ng-container>
+
+    <!-- protein Column -->
+    <ng-container matColumnDef="protein">
+      <th mat-header-cell *matHeaderCellDef> Protein </th>
+      <td mat-cell *matCellDef="let element"> {{element.protein}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
+

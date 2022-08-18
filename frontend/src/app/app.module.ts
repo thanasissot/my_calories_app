@@ -14,6 +14,8 @@ import { AddFoodComponent } from './add-food/add-food.component';
 import {MatIconModule} from "@angular/material/icon";
 import {ToastrModule} from "ngx-toastr";
 import {MydiaryComponent} from "./mydiary/mydiary.component";
+import {MatListModule} from "@angular/material/list";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -34,8 +36,10 @@ import {MydiaryComponent} from "./mydiary/mydiary.component";
     ReactiveFormsModule,
     MatIconModule,
     ToastrModule.forRoot({
-      positionClass :'toast-top-right'
-    })
+      positionClass: 'toast-top-right'
+    }),
+    MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

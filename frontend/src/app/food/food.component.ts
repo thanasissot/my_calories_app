@@ -9,6 +9,7 @@ import {FoodService} from "../../core/service/food.service";
   styleUrls: ['./food.component.css']
 })
 export class FoodComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'calories', 'fat', 'carb', 'protein'];
   public foods: Food[] = [];
 
   constructor(private foodService: FoodService) { }

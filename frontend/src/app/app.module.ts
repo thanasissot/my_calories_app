@@ -18,6 +18,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {EditFoodComponent} from "./edit-food/edit-food.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatInputModule} from "@angular/material/input";
     FoodComponent,
     NavbarComponent,
     AddFoodComponent,
-    MydiaryComponent
+    MydiaryComponent,
+    EditFoodComponent
   ],
   imports: [
     BrowserModule,

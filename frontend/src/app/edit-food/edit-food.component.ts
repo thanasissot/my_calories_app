@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Food } from "../../core/model/food";
-import { NotificationService } from "../../core/service/notification.service";
 import { FoodService } from "../../core/service/food.service";
-
+import { Router } from "@angular/router";
+import { NotificationService } from "../../core/service/notification.service";
 
 @Component({
-  selector: 'app-add-food',
-  templateUrl: './add-food.component.html',
-  styleUrls: ['./add-food.component.css']
+  selector: 'app-edit-food',
+  templateUrl: './edit-food.component.html',
+  styleUrls: ['./edit-food.component.css']
 })
-export class AddFoodComponent implements OnInit {
+export class EditFoodComponent implements OnInit {
   public food: any;
   form: any;
 
@@ -19,14 +17,6 @@ export class AddFoodComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-  }
-
-  addFood(name: string, calories: number, fat: number, carb: number, protein: number): void {
-    console.log(calories)
-    this.foodService.createFood({name, calories, fat, carb, protein} as Food)
-      .subscribe(food => {
-        // this.foods.push(food); SHOW MESSAGE FOOD WAS CREATED SUCCESSFULLY
-      })
   }
 
   private createForm() {
@@ -51,6 +41,5 @@ export class AddFoodComponent implements OnInit {
       this.notifyService.showError("Form is invalid");
     }
   }
-
 
 }

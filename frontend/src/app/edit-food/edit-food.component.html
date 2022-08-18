@@ -1,0 +1,42 @@
+<div class="mx-4 my-4">
+  <form [formGroup]="form" (ngSubmit)="formSubmit(form)">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Calories</mat-label>
+        <input matInput type="number" formControlName="calories">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Fat</mat-label>
+        <input matInput type="number" formControlName="fat">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Carb</mat-label>
+        <input matInput type="number" formControlName="carb">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Protein</mat-label>
+        <input matInput type="number" formControlName="protein">
+      </mat-form-field>
+    </p>
+
+    <div class="row form-group">
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <button mat-button title="Save" type="submit" style="border: 1px dotted black; margin-top: 5px;">
+          Edit Food
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

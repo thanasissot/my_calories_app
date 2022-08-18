@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FoodComponent } from "./food/food.component";
 import { AddFoodComponent } from "./add-food/add-food.component";
 import { MydiaryComponent } from "./mydiary/mydiary.component";
+import { EditFoodComponent } from "./edit-food/edit-food.component";
 
 const formatDate = (): string => {
   let d = new Date(),
@@ -23,8 +24,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'foods', component: FoodComponent },
   { path: 'add-foods', component: AddFoodComponent },
+  { path: 'edit-food/:id', component: EditFoodComponent },
   { path: 'mydiary', redirectTo: 'mydiary/' + formatDate() },
-  { path: 'mydiary/:date', component: MydiaryComponent}
+  { path: 'mydiary/:date', component: MydiaryComponent }
 ]
 
 @NgModule({

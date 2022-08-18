@@ -6,9 +6,6 @@ import { MydiaryComponent } from './mydiary.component';
 
 
 @NgModule({
-  declarations: [
-    MydiaryComponent
-  ],
   imports: [
     CommonModule,
     MydiaryRoutingModule

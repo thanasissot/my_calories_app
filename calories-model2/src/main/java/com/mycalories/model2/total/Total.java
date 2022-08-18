@@ -1,14 +1,18 @@
 package com.mycalories.model2.total;
 
 import com.mycalories.model2.food.Food;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Data
 @Table(name = "total")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Total {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +20,7 @@ public class Total {
     private Long id;
 
     @Column(name = "date")
-    private Date date;
+    private String date;
 
     @Column(name = "gram")
     private int gram;

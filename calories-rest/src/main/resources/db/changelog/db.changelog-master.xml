@@ -18,5 +18,13 @@
             <column name="carb" type="float"/>
             <column name="protein" type="float"/>
         </createTable>
+        <createTable tableName="total">
+            <column name="id" type="bigint">
+                <constraints unique="true" primaryKey="true" primaryKeyName="total_id_pk" nullable="false"/>
+            </column>
+            <column name="date" type="varchar2(255)"/>
+            <column name="gram" type="int"/>
+            <column name="food" type="varchar2(255)"/>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

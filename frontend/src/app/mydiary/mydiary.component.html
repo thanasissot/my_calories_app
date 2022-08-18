@@ -4,7 +4,7 @@
     <li *ngFor="let total of totalsForDate">
       grams: <span>{{total.gram}}</span><br>
       of food: <span>{{total.food.name}}</span><br>
-      total calories: <span>{{total.gram * total.food.calories}}</span><br>
+      total calories: <span>{{(total.gram * total.food.calories) * 0.01}}</span><br>
     </li>
   </ul>
 </div>

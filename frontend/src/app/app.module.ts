@@ -16,6 +16,8 @@ import {ToastrModule} from "ngx-toastr";
 import {MydiaryComponent} from "./mydiary/mydiary.component";
 import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {MatTableModule} from "@angular/material/table";
       positionClass: 'toast-top-right'
     }),
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

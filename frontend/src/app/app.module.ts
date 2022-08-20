@@ -56,7 +56,6 @@ import {AddTotalComponent} from "./mydiary/add-total/add-total.component";
     MatCardModule,
     MatExpansionModule,
     MatSelectModule,
-    MydiaryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

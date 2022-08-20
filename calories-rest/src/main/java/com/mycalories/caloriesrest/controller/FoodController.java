@@ -21,9 +21,16 @@ public class FoodController {
         return new ResponseEntity<>(foodService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/food/{id}") // ID = NAME for FOOD
+    ResponseEntity<Food> getFoodById(@PathVariable String id) {
+        return new ResponseEntity<>(foodService.findByName(id), HttpStatus.OK);
+    }
+
     @PostMapping
     ResponseEntity<Food> createFood(@Validated @RequestBody Food food) {
         return new ResponseEntity<>(foodService.createFood(food), HttpStatus.OK);
     }
+
+
 
 }

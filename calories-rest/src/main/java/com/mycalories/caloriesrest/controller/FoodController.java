@@ -31,6 +31,9 @@ public class FoodController {
         return new ResponseEntity<>(foodService.createFood(food), HttpStatus.OK);
     }
 
-
+    @PostMapping("food/update")
+    ResponseEntity<Food> updateFood(@Validated @RequestBody Food food) {
+        return new ResponseEntity<>(foodService.createFood(food), HttpStatus.OK);
+    }
 
 }

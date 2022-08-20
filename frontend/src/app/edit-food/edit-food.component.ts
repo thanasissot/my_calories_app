@@ -33,19 +33,21 @@ export class EditFoodComponent implements OnInit {
 
   private createForm(food: Food) {
     this.form = new FormGroup({
-      name: new FormControl((food.name), [Validators.required]),
+      name: new FormControl((food.name), [Validators.required],),
       calories: new FormControl((food.calories), [Validators.required]),
       fat: new FormControl((food.fat), [Validators.required]),
       carb: new FormControl((food.carb), [Validators.required]),
       protein: new FormControl((food.protein), [Validators.required])
     })
+    this.form.controls['name'].disable();
     this.loading = false;
   }
 
   formSubmit(form: FormGroup) {
     if (form.valid) {
+      this.form.controls['name'].enable();
       this.food = form.value;
-      this.foodService.createFood(this.food).subscribe(response => {
+      this.foodService.update(this.food).subscribe(response => {
         this.notifyService.showSuccess("Edit Food completed");
         this.router.navigate(['foods']);
       });

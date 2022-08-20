@@ -5,7 +5,6 @@ import { Food } from "../../core/model/food";
 import { NotificationService } from "../../core/service/notification.service";
 import { FoodService } from "../../core/service/food.service";
 
-
 @Component({
   selector: 'app-add-food',
   templateUrl: './add-food.component.html',
@@ -15,7 +14,9 @@ export class AddFoodComponent implements OnInit {
   public food: any;
   form: any;
 
-  constructor(private foodService: FoodService, private router: Router, private notifyService: NotificationService) { }
+  constructor(private foodService: FoodService,
+              private router: Router,
+              private notifyService: NotificationService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -42,15 +43,20 @@ export class AddFoodComponent implements OnInit {
   formSubmit(form: FormGroup) {
     if (form.valid) {
       this.food = form.value;
-      this.foodService.createFood(this.food).subscribe(response => {
-        this.notifyService.showSuccess("Save Food completed");
-        this.router.navigate(['foods']);
+      this.foodService.createFood(this.food).subscribe( {
+        complete: () => {
+            this.notifyService.showSuccess("Save Food completed");
+            this.router.navigate(['foods']);
+        },
+        next(): void {},
+        error: () => {
+          this.notifyService.showWarning("Food already exist in the Database");
+        }
       });
     } else {
       form.markAsDirty();
       this.notifyService.showError("Form is invalid");
     }
   }
-
 
 }

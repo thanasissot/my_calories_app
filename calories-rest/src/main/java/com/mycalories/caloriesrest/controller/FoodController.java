@@ -28,6 +28,9 @@ public class FoodController {
 
     @PostMapping
     ResponseEntity<Food> createFood(@Validated @RequestBody Food food) {
+        if (foodService.findByName(food.getName()) != null) {
+            return new ResponseEntity<>(null, HttpStatus.FOUND);
+        }
         return new ResponseEntity<>(foodService.createFood(food), HttpStatus.OK);
     }
 

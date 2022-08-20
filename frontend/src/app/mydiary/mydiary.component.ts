@@ -10,7 +10,9 @@ import {Observable} from "rxjs";
 })
 export class MydiaryComponent implements OnInit {
   public date: any;
-  public totalsForDate: Total[]  | undefined;
+  displayedColumns: string[] = ['grams', 'name', 'totalCalories'];
+  public totalsForDate: Total[] = [];
+  sumOfTotalCalories: any;
 
   constructor(private totalService: TotalService,
               private route: ActivatedRoute) { }
@@ -21,18 +23,27 @@ export class MydiaryComponent implements OnInit {
     });
 
     this.getTotalsForDate(this.date).subscribe(
-      totals => this.totalsForDate = totals
+      totals => {
+        this.totalsForDate = totals;
+        this.sumOfTotalCalories = this.calculateTotalDailyCalories(this.totalsForDate);
+      }
     );
   }
 
   getTotalsForDate(date: string): Observable<Total[]> {
     return this.totalService.getTotalsByDate(date);
-
   }
 
+  calculateTotalDailyCalories(totals: Total[]): number {
+    let sum = 0;
+    totals.forEach(total => {
+      sum += (total.gram * total.food.calories * 0.01);
+    })
+    return sum;
+  }
 
-
-
-
+  sum_reducer(accumulator: number, currentValue: number) {
+    return accumulator + currentValue;
+  }
 
 }

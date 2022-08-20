@@ -19,6 +19,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {EditFoodComponent} from "./edit-food/edit-food.component";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -29,24 +30,25 @@ import {EditFoodComponent} from "./edit-food/edit-food.component";
     MydiaryComponent,
     EditFoodComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-top-right'
-    }),
-    MatListModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-top-right'
+        }),
+        MatListModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

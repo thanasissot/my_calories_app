@@ -1,5 +1,5 @@
 <div class="mx-4 my-4">
-  <form [formGroup]="form" (ngSubmit)="formSubmit(form)">
+  <form [formGroup]="form" (ngSubmit)="formSubmit(form)" *ngIf="!loading">
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>

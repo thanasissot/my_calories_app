@@ -23,11 +23,25 @@ export class FoodService {
       );
   }
 
+  getFoodById(id: string): Observable<Food> {
+    return this.http.get<Food>(this.foodsUrl + "/food/" + id)
+      .pipe(
+        catchError(this.handleError<Food>('getFoodById', undefined))
+      );
+  }
+
   createFood(food: Food): Observable<Food> {
     return this.http.post<Food>(this.foodsUrl, food, this.httpOptions)
     .pipe(
-      catchError(this.handleError<Food>('getFoods'))
+      catchError(this.handleError<Food>('createFood'))
     );
+  }
+
+  update(food: Food): Observable<Food> {
+    return this.http.post<Food>(this.foodsUrl + "/food/update", food, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Food>('updateFood'))
+      );
   }
 
   /**

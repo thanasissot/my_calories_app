@@ -42,8 +42,4 @@ export class MydiaryComponent implements OnInit {
     return sum;
   }
 
-  sum_reducer(accumulator: number, currentValue: number) {
-    return accumulator + currentValue;
-  }
-
 }

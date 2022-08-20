@@ -20,6 +20,11 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {EditFoodComponent} from "./edit-food/edit-food.component";
 import {MatCardModule} from "@angular/material/card";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSelectModule} from "@angular/material/select";
+import {MydiaryModule} from "./mydiary/mydiary.module";
+import {AddTotalModule} from "./mydiary/add-total/add-total.module";
+import {AddTotalComponent} from "./mydiary/add-total/add-total.component";
 
 @NgModule({
   declarations: [
@@ -28,27 +33,31 @@ import {MatCardModule} from "@angular/material/card";
     NavbarComponent,
     AddFoodComponent,
     MydiaryComponent,
-    EditFoodComponent
+    EditFoodComponent,
+    AddTotalComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule,
-        AppRoutingModule,
-        MatToolbarModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        ToastrModule.forRoot({
-            positionClass: 'toast-top-right'
-        }),
-        MatListModule,
-        MatTableModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'
+    }),
+    MatListModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MydiaryModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

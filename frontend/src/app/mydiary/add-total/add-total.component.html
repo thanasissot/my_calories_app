@@ -1,0 +1,33 @@
+<mat-card *ngIf="!loading">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add Totals
+      </mat-panel-title>
+      <mat-panel-description>
+        Click to see more
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>A Total is a type of food and the total grams consumed for it. It's stored along with current date.</p>
+  </mat-expansion-panel>
+  <mat-card-content class="my-2">
+    <form [formGroup]="form" (ngSubmit)="formSubmit(form)">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Food</mat-label>
+        <mat-select formControlName="food" >
+          <mat-option *ngFor="let food of foods" [value]="food">{{food.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mx-3">
+        <mat-label>Grams</mat-label>
+        <input matInput type="number" formControlName="gram" >
+      </mat-form-field>
+      <mat-placeholder>
+        <button mat-button title="Save" type="submit" style="border: 1px solid black; margin-top: 5px;">
+          Add Total
+        </button>
+      </mat-placeholder>
+    </form>
+
+  </mat-card-content>
+</mat-card>

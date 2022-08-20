@@ -22,14 +22,6 @@ export class AddFoodComponent implements OnInit {
     this.createForm();
   }
 
-  addFood(name: string, calories: number, fat: number, carb: number, protein: number): void {
-    console.log(calories)
-    this.foodService.createFood({name, calories, fat, carb, protein} as Food)
-      .subscribe(food => {
-        // this.foods.push(food); SHOW MESSAGE FOOD WAS CREATED SUCCESSFULLY
-      })
-  }
-
   private createForm() {
     this.form = new FormGroup({
       name: new FormControl((''), [Validators.required]),

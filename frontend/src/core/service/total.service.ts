@@ -26,6 +26,13 @@ export class TotalService {
       )
   }
 
+  createTotal(total: Total): Observable<any> {
+    return this.http.post<any>(this.totalUrl, total, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('createTotal', null))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

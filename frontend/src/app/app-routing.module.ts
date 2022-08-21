@@ -21,7 +21,7 @@ const formatDate = (): string => {
 }
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: '/foods', pathMatch: 'full' },
   { path: 'foods', component: FoodComponent },
   { path: 'add-foods', component: AddFoodComponent },
   { path: 'edit-food/:id', component: EditFoodComponent },

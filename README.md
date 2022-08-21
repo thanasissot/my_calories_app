@@ -27,6 +27,5 @@ My Calories App
    Angular App
    npm i @angular/material
    npm install ngx-toastr --save
-   
 
-5. 
+... on going process

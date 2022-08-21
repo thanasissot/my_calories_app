@@ -11,9 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,21 +19,32 @@ import java.util.List;
 @Log4j2
 public class TotalController {
     private final TotalService totalService;
-    private final FoodService foodService;
 
     @GetMapping
     ResponseEntity<List<Total>> getAllTotals() {
         return new ResponseEntity<>(totalService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/date/{date}")
+    ResponseEntity<List<Total>> getAllTotalsByDate(@PathVariable String date) {
+        return new ResponseEntity<>(totalService.getAllTotalsByDate(date), HttpStatus.OK);
+    }
     @PostMapping
     ResponseEntity<Total> createTotal(@Validated @RequestBody Total total) {
         return new ResponseEntity<>(totalService.createTotal(total), HttpStatus.OK);
     }
 
-    @GetMapping("/date/{date}")
-    ResponseEntity<List<Total>> getAllTotalsByDate(@PathVariable String date) {
-        return new ResponseEntity<>(totalService.getAllTotalsByDate(date), HttpStatus.OK);
+    @PostMapping("/delete")
+    ResponseEntity<HttpStatus> deleteTotal(@Validated @RequestBody Total total) {
+        try {
+            totalService.deleteTotal(total);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            log.error(e.getLocalizedMessage());
+        }
+
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 
 }

@@ -24,4 +24,8 @@ public class TotalService {
         return totalRepository.findByDate(date);
     }
 
+    public void deleteTotal(Total total) {
+        totalRepository.delete(total);
+    }
+
 }

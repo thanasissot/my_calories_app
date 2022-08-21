@@ -2,7 +2,15 @@
   <mat-card-header>
     <mat-card-title>My Diary</mat-card-title>
     <mat-card-subtitle>Date : {{date}}</mat-card-subtitle>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose Date</mat-label>
+      <input matInput [matDatepicker]="dp"
+             (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
   </mat-card-header>
+
   <table mat-table [dataSource]="totalsForDate" class="mat-elevation-z8">
     <!-- name Column -->
     <ng-container matColumnDef="grams">

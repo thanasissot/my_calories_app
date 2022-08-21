@@ -23,6 +23,9 @@ import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSelectModule} from "@angular/material/select";
 import {AddTotalComponent} from "./mydiary/add-total/add-total.component";
+import {MydiaryModule} from "./mydiary/mydiary.module";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -54,6 +57,8 @@ import {AddTotalComponent} from "./mydiary/add-total/add-total.component";
     MatCardModule,
     MatExpansionModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

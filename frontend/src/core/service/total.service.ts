@@ -33,6 +33,13 @@ export class TotalService {
       );
   }
 
+  deleteTotal(total: Total): Observable<any> {
+    return this.http.post<any>(this.totalUrl + "/delete", total, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('deleteTotal', null))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

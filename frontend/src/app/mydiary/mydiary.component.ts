@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { TotalService } from "../../core/service/total.service";
 import { Total } from "../../core/model/total";
 import {Observable} from "rxjs";
+import {NotificationService} from "../../core/service/notification.service";
 
 @Component({
   templateUrl: './mydiary.component.html',
@@ -10,12 +11,15 @@ import {Observable} from "rxjs";
 })
 export class MydiaryComponent implements OnInit {
   public date: any;
-  displayedColumns: string[] = ['grams', 'name', 'totalCalories'];
+  displayedColumns: string[] = ['grams', 'name', 'totalCalories', 'actions'];
   public totalsForDate: Total[] = [];
   sumOfTotalCalories: any;
 
-  constructor(private totalService: TotalService,
-              private route: ActivatedRoute) { }
+  constructor(
+    private totalService: TotalService,
+    private route: ActivatedRoute,
+    private notifyService: NotificationService
+    ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -42,4 +46,15 @@ export class MydiaryComponent implements OnInit {
     return sum;
   }
 
+  deleteTotal(element: Total) {
+    this.totalService.deleteTotal(element).subscribe({
+      complete: () => {
+        this.notifyService.showSuccess("Total Entry deleted");
+        window.location.reload();
+      },
+      error: () => {
+        this.notifyService.showWarning("Something went wrong");
+      }
+    })
+  }
 }

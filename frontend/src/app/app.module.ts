@@ -22,8 +22,6 @@ import {EditFoodComponent} from "./edit-food/edit-food.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSelectModule} from "@angular/material/select";
-import {MydiaryModule} from "./mydiary/mydiary.module";
-import {AddTotalModule} from "./mydiary/add-total/add-total.module";
 import {AddTotalComponent} from "./mydiary/add-total/add-total.component";
 
 @NgModule({
@@ -34,7 +32,7 @@ import {AddTotalComponent} from "./mydiary/add-total/add-total.component";
     AddFoodComponent,
     MydiaryComponent,
     EditFoodComponent,
-    AddTotalComponent
+    AddTotalComponent,
   ],
   imports: [
     BrowserModule,

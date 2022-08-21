@@ -5,7 +5,6 @@ import {FoodService} from "../../../core/service/food.service";
 import {Total} from "../../../core/model/total";
 import {TotalService} from "../../../core/service/total.service";
 import {NotificationService} from "../../../core/service/notification.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-total',
@@ -17,7 +16,6 @@ export class AddTotalComponent implements OnInit {
   loading: boolean = true;
   total: any;
   foods: Food[] = [];
-  selectedFood: any;
   @Input()
   date: Date | undefined;
 
@@ -25,8 +23,6 @@ export class AddTotalComponent implements OnInit {
     private foodService: FoodService,
     private totalService: TotalService,
     private notifyService: NotificationService,
-    private router: Router
-
   ) { }
 
   ngOnInit(): void {

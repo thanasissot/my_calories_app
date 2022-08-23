@@ -1,12 +1,16 @@
 package com.mycalories.model2.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "users")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -14,10 +18,10 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "user_name", nullable = false, length = 20)
+    @Column(name = "user_name", unique = true, nullable = false, length = 20)
     private String userName;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(name = "email", unique = true, nullable = false,  length = 45)
     private String email;
 
     @Column(nullable = false, length = 64)

@@ -3,10 +3,12 @@ package com.mycalories.caloriesrest.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 
     @Nullable
@@ -16,7 +18,6 @@ public class UserDTO {
 
     private String email;
 
-    @JsonIgnore
     private String password;
 
     private String firstName;

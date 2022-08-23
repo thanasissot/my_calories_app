@@ -1,7 +1,7 @@
 package com.mycalories.caloriesrest.controller;
 
+import com.mycalories.caloriesrest.UserMapper;
 import com.mycalories.caloriesrest.dto.UserDTO;
-import com.mycalories.caloriesrest.mapper.UserMapper;
 import com.mycalories.caloriesrest.service.UserService;
 import com.mycalories.model2.user.User;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +20,13 @@ public class UserController {
     private final UserMapper userMapper;
 
     @PostMapping("/api/register")
-    public ResponseEntity<HttpStatus> register(@RequestBody UserDTO userDTO) {
+    public User register(@RequestBody UserDTO userDTO) {
         try {
-
-            User newUser = this.userService.createUser(userMapper.dtoToEntity(userDTO));
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return this.userService.createUser(userMapper.dtoToEntity(userDTO));
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        return null;
 
     }
 }

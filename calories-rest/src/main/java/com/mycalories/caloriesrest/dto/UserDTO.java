@@ -14,7 +14,7 @@ public class UserDTO {
     @Nullable
     private Long id;
 
-    private String userName;
+    private String username;
 
     private String email;
 

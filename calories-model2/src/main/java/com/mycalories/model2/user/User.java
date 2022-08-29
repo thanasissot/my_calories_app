@@ -1,5 +1,6 @@
 package com.mycalories.model2.user;
 
+import com.mycalories.model2.authority.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,4 +34,7 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
+    @OneToOne
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
 }

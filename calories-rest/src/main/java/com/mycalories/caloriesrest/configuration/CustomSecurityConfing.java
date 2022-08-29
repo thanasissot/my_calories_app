@@ -29,7 +29,7 @@ public class CustomSecurityConfing extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/register").permitAll()
             .antMatchers("/login").permitAll()
-            .antMatchers("/dashboard").authenticated()
+            .antMatchers("/dashboard").hasAuthority("WRITE CUSTOM AUTHORITY")
             .and()
             .httpBasic();
     }

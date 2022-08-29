@@ -1,32 +1,29 @@
 package com.mycalories.model2.user;
 
+import com.mycalories.model2.UserRole.UserRole;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @Table(name = "users")
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "user_name", nullable = false, length = 20)
-    private String userName;
-
-    @Column(nullable = false, unique = true, length = 45)
-    private String email;
+    private String username;
 
     @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(name = "first_name", nullable = false, length = 20)
-    private String firstName;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UserRole> userRoles = new HashSet<>();
 
-    @Column(name = "last_name", nullable = false, length = 20)
-    private String lastName;
 
 }

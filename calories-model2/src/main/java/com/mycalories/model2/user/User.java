@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -34,7 +35,6 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    @OneToOne
-    @JoinColumn(name = "authority_id")
-    private Authority authority;
+    @OneToMany(mappedBy = "user")
+    private Set<Authority> authorities;
 }

@@ -1,5 +1,6 @@
 package com.mycalories.caloriesrest.configuration;
 
+import com.mycalories.model2.authority.Authority;
 import com.mycalories.model2.user.User;
 import com.mycalories.model2.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
@@ -36,9 +38,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             throw new UsernameNotFoundException("User not found");
 
         if (this.passwordEncoder.matches(password, user.getPassword())) {
-            List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(user.getAuthority().getAuthority()));
-            return new UsernamePasswordAuthenticationToken(username, password, authorities);
+
+            return new UsernamePasswordAuthenticationToken(username, password, getAuthorities(user.getAuthorities()));
         } else {
             throw new BadCredentialsException("Invalid credentials");
         }
@@ -48,5 +49,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
+    }
+
+    private List<SimpleGrantedAuthority> getAuthorities(Set<Authority> authorities) {
+        List<SimpleGrantedAuthority> list = new ArrayList<>();
+        for (Authority authority : authorities) {
+            list.add(new SimpleGrantedAuthority(authority.getAuthority()));
+        }
+        return list;
     }
 }

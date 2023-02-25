@@ -25,9 +25,22 @@
             <column name="date" type="varchar2(255)"/>
             <column name="gram" type="int"/>
             <column name="food_name" type="varchar2(255)"/>
-            <column name="calories" type="decimal(5,2)">
+            <column name="calories" type="decimal(7,2)">
                 <constraints nullable="true"/>
             </column>
+        </createTable>
+        <createTable tableName="marketplace">
+            <column name="name" type="varchar2(250)">
+                <constraints unique="true" primaryKey="true" primaryKeyName="marketplace_id_pk" nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="item">
+            <column name="id" type="bigint">
+                <constraints unique="true" primaryKey="true" primaryKeyName="total_id_pk" nullable="false"/>
+            </column>
+            <column name="name" type="varchar2(1000)"/>
+            <column name="url" type="varchar2(1000)"/>
+            <column name="marketplace" type="varchar2(255)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

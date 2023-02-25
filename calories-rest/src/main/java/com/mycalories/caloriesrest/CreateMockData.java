@@ -1,8 +1,12 @@
 package com.mycalories.caloriesrest;
 
 import com.mycalories.caloriesrest.service.FoodService;
+import com.mycalories.caloriesrest.service.ItemService;
+import com.mycalories.caloriesrest.service.MarketplaceService;
 import com.mycalories.caloriesrest.service.MealService;
 import com.mycalories.model2.food.Food;
+import com.mycalories.model2.item.Item;
+import com.mycalories.model2.marketplace.Marketplace;
 import com.mycalories.model2.meal.Meal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -18,9 +22,11 @@ import java.util.*;
 @Component
 @RequiredArgsConstructor
 @Log4j2
-public class CreateData {
+public class CreateMockData {
     private final FoodService foodService;
     private final MealService mealService;
+    private final MarketplaceService marketplaceService;
+    private final ItemService itemService;
 
 
     public List<Food> createFoods() {
@@ -62,9 +68,28 @@ public class CreateData {
         }
     }
 
+    public void createMarketplacesAndSomeItems() {
+        if (this.marketplaceService.getAllMarketplaces().isEmpty()) {
+            List<String> listOfMarkets = List.of("AB_BASILOPOULOS", "MASOUTIS", "SKLAVENITIS");
+            listOfMarkets.forEach(market -> marketplaceService.createMarketplace(new Marketplace(market)));
+
+            // createItems
+            Marketplace marketplace = this.marketplaceService.getMarketplaceByName(listOfMarkets.get(0));
+            Item item = new Item();
+            item.setName("TOTAL YOGURT 5% 1kg");
+            item.setMarketplace(marketplace);
+            item.setUrl("https://api.ab.gr/?operationName=ProductDetails&variables=%7B%22productCode%22%3A%227078618%22%2C%22lang%22%3A%22gr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%220b316057a08467ce64715e01a00dd19fe091aa1a642926b6438810610ecbbcb9%22%7D%7D");
+            item = itemService.createItem(item);
+
+        }
+    }
+
+
+
     @PostConstruct
     public void run() {
         List<Food> foodlist = createFoods();
         createTotals(foodlist);
+        createMarketplacesAndSomeItems();
     }
 }

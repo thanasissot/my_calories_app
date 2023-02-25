@@ -12,6 +12,7 @@
     <modules>
         <module>calories-model2</module>
         <module>calories-rest</module>
+        <module>market-prices</module>
     </modules>
 
     <properties>

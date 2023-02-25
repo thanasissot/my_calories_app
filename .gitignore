@@ -1,6 +1,6 @@
-calories-model2/target/*
-calories-rest/target/*
-frontend/node_modules/*
+calories-model2/target/
+calories-rest/target/
+frontend/node_modules/
 frontend/.angular/
 market-prices/target/
 .idea/

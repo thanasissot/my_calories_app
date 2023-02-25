@@ -73,7 +73,8 @@ public class CreateMockData {
     public void createMarketplacesAndSomeItems() {
         if (this.marketplaceService.getAllMarketplaces().isEmpty()) {
             List<String> listOfMarkets = List.of(AB_BASILOPOULOS, "MASOUTIS", "SKLAVENITIS");
-            listOfMarkets.forEach(market -> marketplaceService.createMarketplace(new Marketplace(market)));
+
+            marketplaceService.createMarketplace(new Marketplace(AB_BASILOPOULOS, 25, 2, "Για παραγγελίες αξίας άνω των 45€ η παράδοση γίνεται δωρεάν."));
 
             // createItems
             Marketplace marketplace = this.marketplaceService.getMarketplaceByName(listOfMarkets.get(0));
@@ -82,6 +83,13 @@ public class CreateMockData {
             item.setMarketplace(marketplace);
             item.setUrl("https://api.ab.gr/?operationName=ProductDetails&variables=%7B%22productCode%22%3A%227078618%22%2C%22lang%22%3A%22gr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%220b316057a08467ce64715e01a00dd19fe091aa1a642926b6438810610ecbbcb9%22%7D%7D");
             item = itemService.createItem(item);
+
+            item = new Item();
+            item.setName("KELLOGGS Muesli Dark Chocolate 450gr");
+            item.setMarketplace(marketplace);
+            item.setUrl("https://api.ab.gr/?operationName=ProductDetails&variables=%7B%22productCode%22%3A%227527904%22%2C%22lang%22%3A%22gr%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%220b316057a08467ce64715e01a00dd19fe091aa1a642926b6438810610ecbbcb9%22%7D%7D");
+            item = itemService.createItem(item);
+
 
         }
     }

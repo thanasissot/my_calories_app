@@ -33,6 +33,9 @@
             <column name="name" type="varchar2(250)">
                 <constraints unique="true" primaryKey="true" primaryKeyName="marketplace_id_pk" nullable="false"/>
             </column>
+            <column name="minimum_order_value" type="int"/>
+            <column name="shipping_cost" type="int"/>
+            <column name="comments" type="varchar2(1000)"/>
         </createTable>
         <createTable tableName="item">
             <column name="id" type="bigint">

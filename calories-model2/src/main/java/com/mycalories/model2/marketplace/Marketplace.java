@@ -19,4 +19,13 @@ public class Marketplace {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "minimum_order_value")
+    private int minimumOrderValue;
+
+    @Column(name = "shipping_cost")
+    private int shippingCost;
+
+    @Column(name = "comments")
+    private String comments;
+
 }

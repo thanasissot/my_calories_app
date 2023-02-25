@@ -1,1 +1,5 @@
-/calories-model2/target/
+calories-model2/target/*
+calories-rest/target/*
+frontend/node_modules/*
+frontend/.angular/
+.idea/

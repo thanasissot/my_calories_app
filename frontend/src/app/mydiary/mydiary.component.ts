@@ -1,7 +1,7 @@
 import {Component, LOCALE_ID, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
-import { TotalService } from "../../core/service/total.service";
-import { Total } from "../../core/model/total";
+import { MealService } from "../../core/service/meal.service";
+import { Meal } from "../../core/model/Meal";
 import {Observable} from "rxjs";
 import {NotificationService} from "../../core/service/notification.service";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
@@ -13,11 +13,11 @@ import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 export class MydiaryComponent implements OnInit {
   public date: any;
   displayedColumns: string[] = ['grams', 'name', 'totalCalories', 'actions'];
-  public totalsForDate: Total[] = [];
+  public totalsForDate: Meal[] = [];
   sumOfTotalCalories: any;
 
   constructor(
-    private totalService: TotalService,
+    private totalService: MealService,
     private route: ActivatedRoute,
     private notifyService: NotificationService,
     private router: Router
@@ -36,22 +36,18 @@ export class MydiaryComponent implements OnInit {
     );
   }
 
-  getTotalsForDate(date: string): Observable<Total[]> {
+  getTotalsForDate(date: string): Observable<Meal[]> {
     return this.totalService.getTotalsByDate(date);
   }
 
-  calculateTotalDailyCalories(totals: Total[]): number {
-    let sum = 0;
-    totals.forEach(total => {
-      sum += (total.gram * total.food.calories * 0.01);
-    })
-    return sum;
+  calculateTotalDailyCalories(totals: Meal[]): number {
+    return totals.reduce((a, b) => a + b.calories, 0);;
   }
 
-  deleteTotal(element: Total) {
+  deleteTotal(element: Meal) {
     this.totalService.deleteTotal(element).subscribe({
       complete: () => {
-        this.notifyService.showSuccess("Total Entry deleted");
+        this.notifyService.showSuccess("Meal Entry deleted");
         window.location.reload();
       },
       error: () => {

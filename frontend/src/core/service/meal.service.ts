@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, of, pipe} from 'rxjs';
+import { Observable, of, pipe} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import {Total} from "../model/total";
-import {Food} from "../model/food";
+import { Meal } from "../model/Meal";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class TotalService {
-  private totalUrl = 'api/total';
+export class MealService {
+  private totalUrl = 'api/meal';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -19,21 +18,21 @@ export class TotalService {
     private http: HttpClient
   ) { }
 
-  getTotalsByDate(date: String): Observable<Total[]> {
-    return this.http.get<Total[]>(this.totalUrl + "/date/" + date)
+  getTotalsByDate(date: String): Observable<Meal[]> {
+    return this.http.get<Meal[]>(this.totalUrl + "/date/" + date)
       .pipe(
-        catchError(this.handleError<Total[]>('getTotalsByDate', []))
+        catchError(this.handleError<Meal[]>('getTotalsByDate', []))
       )
   }
 
-  createTotal(total: Total): Observable<any> {
+  createTotal(total: Meal): Observable<any> {
     return this.http.post<any>(this.totalUrl, total, this.httpOptions)
       .pipe(
         catchError(this.handleError<any>('createTotal', null))
       );
   }
 
-  deleteTotal(total: Total): Observable<any> {
+  deleteTotal(total: Meal): Observable<any> {
     return this.http.post<any>(this.totalUrl + "/delete", total, this.httpOptions)
       .pipe(
         catchError(this.handleError<any>('deleteTotal', null))

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Food } from "../../core/model/food";
+import { Food } from "../../core/model/Food";
 import { NotificationService } from "../../core/service/notification.service";
 import { FoodService } from "../../core/service/food.service";
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { Food } from '../../core/model/food';
+import { Food } from '../../core/model/Food';
 import {FoodService} from "../../core/service/food.service";
 
 @Component({

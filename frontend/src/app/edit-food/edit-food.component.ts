@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FoodService } from "../../core/service/food.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NotificationService } from "../../core/service/notification.service";
-import {Food} from "../../core/model/food";
+import { Food } from "../../core/model/Food";
 
 @Component({
   selector: 'app-edit-food',

@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Food} from "../../../core/model/food";
+import {Food} from "../../../core/model/Food";
 import {FoodService} from "../../../core/service/food.service";
-import {Total} from "../../../core/model/total";
-import {TotalService} from "../../../core/service/total.service";
+import {Meal} from "../../../core/model/Meal";
+import {MealService} from "../../../core/service/meal.service";
 import {NotificationService} from "../../../core/service/notification.service";
 
 @Component({
@@ -21,7 +21,7 @@ export class AddTotalComponent implements OnInit {
 
   constructor(
     private foodService: FoodService,
-    private totalService: TotalService,
+    private totalService: MealService,
     private notifyService: NotificationService,
   ) { }
 
@@ -45,10 +45,11 @@ export class AddTotalComponent implements OnInit {
     if (form.valid) {
         this.total = form.value;
         this.total.date = this.date;
-        console.log(this.total)
+        this.total.calories = this.total.food.calories * this.total.gram * 0.01;
+        this.total.foodName = this.total.food.name;
         this.totalService.createTotal(this.total).subscribe( {
           complete: () => {
-            this.notifyService.showSuccess("Total Added to your diary");
+            this.notifyService.showSuccess("Meal Added to your diary");
             window.location.reload();
             },
           next(): void {},

@@ -1,6 +1,6 @@
-import { Food } from '../model/food';
+import { Meal } from '../model/Food';
 
-export const FOODS: Food[] = [
+export const FOODS: Meal[] = [
   {name: "food-1", calories: 100, fat: 10, carb: 10, protein: 10},
   {name: "food-2", calories: 200, fat: 20, carb: 20, protein: 20},
   {name: "food-3", calories: 300, fat: 30, carb: 30, protein: 30},

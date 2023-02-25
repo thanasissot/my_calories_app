@@ -41,6 +41,12 @@
             <column name="name" type="varchar2(1000)"/>
             <column name="url" type="varchar2(1000)"/>
             <column name="marketplace" type="varchar2(255)"/>
+            <column name="formattedValue" type="varchar2(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="value" type="decimal(7,2)">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

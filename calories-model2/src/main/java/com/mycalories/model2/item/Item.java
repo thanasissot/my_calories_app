@@ -27,4 +27,10 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "marketplace")
     private Marketplace marketplace;
+
+    @Column(name = "formattedValue")
+    private String formattedValue;
+
+    @Column(name = "value")
+    private double value;
 }

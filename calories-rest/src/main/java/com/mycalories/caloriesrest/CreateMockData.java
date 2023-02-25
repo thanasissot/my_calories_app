@@ -1,9 +1,9 @@
 package com.mycalories.caloriesrest;
 
-import com.mycalories.caloriesrest.service.FoodService;
-import com.mycalories.caloriesrest.service.ItemService;
-import com.mycalories.caloriesrest.service.MarketplaceService;
-import com.mycalories.caloriesrest.service.MealService;
+import com.mycalories.repo.services.FoodService;
+import com.mycalories.repo.services.ItemService;
+import com.mycalories.repo.services.MarketplaceService;
+import com.mycalories.repo.services.MealService;
 import com.mycalories.model2.food.Food;
 import com.mycalories.model2.item.Item;
 import com.mycalories.model2.marketplace.Marketplace;
@@ -18,6 +18,8 @@ import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import static com.mycalories.common.Constants.AB_BASILOPOULOS;
 
 @Component
 @RequiredArgsConstructor
@@ -70,7 +72,7 @@ public class CreateMockData {
 
     public void createMarketplacesAndSomeItems() {
         if (this.marketplaceService.getAllMarketplaces().isEmpty()) {
-            List<String> listOfMarkets = List.of("AB_BASILOPOULOS", "MASOUTIS", "SKLAVENITIS");
+            List<String> listOfMarkets = List.of(AB_BASILOPOULOS, "MASOUTIS", "SKLAVENITIS");
             listOfMarkets.forEach(market -> marketplaceService.createMarketplace(new Marketplace(market)));
 
             // createItems

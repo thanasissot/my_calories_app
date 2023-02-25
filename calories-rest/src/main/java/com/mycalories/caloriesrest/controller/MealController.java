@@ -1,7 +1,7 @@
 package com.mycalories.caloriesrest.controller;
 
 
-import com.mycalories.caloriesrest.service.MealService;
+import com.mycalories.repo.services.MealService;
 import com.mycalories.model2.meal.Meal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

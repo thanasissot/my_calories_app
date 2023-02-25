@@ -1,4 +1,4 @@
-package com.mycalories.caloriesrest.service;
+package com.mycalories.repo.services;
 
 import com.mycalories.model2.marketplace.Marketplace;
 import com.mycalories.model2.marketplace.MarketplaceRepository;

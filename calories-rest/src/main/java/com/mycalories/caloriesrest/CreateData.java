@@ -1,10 +1,11 @@
 package com.mycalories.caloriesrest;
 
 import com.mycalories.caloriesrest.service.FoodService;
-import com.mycalories.caloriesrest.service.TotalService;
+import com.mycalories.caloriesrest.service.MealService;
 import com.mycalories.model2.food.Food;
-import com.mycalories.model2.total.Total;
+import com.mycalories.model2.meal.Meal;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -16,14 +17,15 @@ import java.util.*;
 
 @Component
 @RequiredArgsConstructor
+@Log4j2
 public class CreateData {
     private final FoodService foodService;
-    private final TotalService totalService;
-    private final Random random = new Random();
+    private final MealService mealService;
 
-    private final List<Food> foodList = new ArrayList<>();
 
-    public void createFoods() {
+    public List<Food> createFoods() {
+        Random random = new Random();
+        List<Food> foodList = new ArrayList<>();
         NumberFormat formatter = NumberFormat.getInstance();
         formatter.setMaximumFractionDigits(1);
         formatter.setMinimumFractionDigits(1);
@@ -37,28 +39,32 @@ public class CreateData {
                         Float.parseFloat(formatter.format(random.nextFloat(100)).replace(",", ".")),
                         Float.parseFloat(formatter.format(random.nextFloat(100)).replace(",", ".")),
                         Float.parseFloat(formatter.format(random.nextFloat(100)).replace(",", ".")));
-                foodService.createFood(food);
-            } else {
-                foodList.add(food);
+                food = foodService.createFood(food);
             }
+            foodList.add(food);
+
         }
+
+        return foodList;
     }
 
-    public void createTotals() {
+    public void createTotals(List<Food> foodList) {
+        Random random = new Random();
         LocalDateTime ldt = LocalDateTime.now();
         String date = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(ldt);
-        if (!totalService.getAllTotalsByDate(date).isEmpty())
+        if (!mealService.getAllTotalsByDate(date).isEmpty())
             return;
 
         for (Food food : foodList) {
-            Total total = new Total((Long) null, date, random.nextInt(500), food);
-            totalService.createTotal(total);
+            int rand = random.nextInt(500);
+            Meal total = new Meal(null, date, rand, food.getName(), (food.getCalories() * rand) * 0.01);
+            total = mealService.createTotal(total);
         }
     }
 
     @PostConstruct
     public void run() {
-        createFoods();
-        createTotals();
+        List<Food> foodlist = createFoods();
+        createTotals(foodlist);
     }
 }

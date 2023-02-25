@@ -1,19 +1,17 @@
-package com.mycalories.model2.total;
+package com.mycalories.model2.meal;
 
-import com.mycalories.model2.food.Food;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "total")
+@Table(name = "meal")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Total {
+public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -25,8 +23,10 @@ public class Total {
     @Column(name = "gram")
     private int gram;
 
-    @OneToOne
-    @JoinColumn(name = "food")
-    private Food food;
+    @Column(name = "food_name")
+    private String foodName;
+
+    @Column(name = "calories")
+    private double calories;
 
 }
